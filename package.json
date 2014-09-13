@@ -1,15 +1,14 @@
 {
   "name": "an-illusion",
   "author": "Xavier Bruhiere <xavier.bruhiere@gmail.com>",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Intuition API emulation and documentation.",
   "repository": "https://github.com/intuition-io/illusion",
   "keywords": [
-    "REST",
+    "api",
     "fake",
-    "doc",
-    "tool",
-    "development"
+    "nodejs",
+    "tool"
   ],
   "license": "MIT",
   "bin": {
@@ -41,6 +40,7 @@
   "devDependencies": {
     "coveralls": "^2.11.1",
     "istanbul": "^0.3.2",
+    "jshint": "^2.5.5",
     "mocha": "^1.21.4",
     "mocha-lcov-reporter": "0.0.1",
     "nodelint": "^0.6.2",
