@@ -1,8 +1,13 @@
 # [Illusion][release]
 
+[![](https://badge.fury.io/js/an-illusion.png)](https://www.npmjs.org/package/an-illusion)
+[![Dependency Status](https://gemnasium.com/intuition-io/illusion.svg)](https://gemnasium.com/intuition-io/illusion)
+[![Build Status](https://api.shippable.com/projects/54147f21f82ab7ebd69ca4cb/badge?branchName=master)](https://app.shippable.com/projects/54147f21f82ab7ebd69ca4cb/builds/latest)
+[![Coverage Status](https://coveralls.io/repos/intuition-io/illusion/badge.png)](https://coveralls.io/r/intuition-io/illusion)
+
 > Fake it until you make it
 
-`illusion` is a little tool that emulates [Telepathy][telepathy] RESTFul API
+`illusion` is a little tool that emulates [Telepathy][telepathy] RESTful API
 for developing clients and integration tests.
 
 It also provides a convenient documentation of available backend endpoints.
@@ -20,7 +25,7 @@ illusion fakeit -h
 illusion doc -h
 ```
 
-From there you can either consult the API with `illusion doc` or fire up a fake server :
+You can either consult the API with `illusion doc` or fire up a fake server :
 
 ```
 $ illusion fakeit --datapoints 3,6,100 --metric portfolio:cash,daily_perf:returns --id someone
@@ -52,7 +57,7 @@ $ curl localhost:3333/v0/health
 
 ## Conventions
 
-`illusion` follows some wide-accepted guidelines
+The project follows some wide-accepted guidelines
 
 * [Semantic Versioning known as SemVer][semver]
 * [Git commit messages][commit]
@@ -78,3 +83,4 @@ Copyright 2014 Xavier Bruhiere.
 [changelog]: http://keepachangelog.com/
 [trello]: https://trello.com/c/LcPx6Z8X/74-changelog-illusion
 [telepathy]: https://github.com/intuition-io/telepathy
+[xbtwitter]: https://twitter.com/XavierBruhiere
