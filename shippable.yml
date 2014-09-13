@@ -7,7 +7,7 @@ node_js:
 env:
   - XUNIT_FILE=shippable/testresults/result.xml
   - COVERALLS_SERVICE_NAME=shippable
-  - COVERALLS_REPO_TOKEN=
+  - COVERALLS_REPO_TOKEN=IgZnLIIZrryZtTLcpqBxAeiG2Yj4hHBla
 
 before_script:
   - mkdir -p shippable/testresults
@@ -20,9 +20,9 @@ script:
   - ./node_modules/.bin/mocha
 
 # Tell istanbul to generate a coverage report
+# FIXME- cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 after_success:
   - ./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec
-  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 
 notifications:
   mail:
