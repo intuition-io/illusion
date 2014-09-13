@@ -1,0 +1,29 @@
+language: node_js
+
+node_js:
+  - 0.10.25
+
+# The path for Xunit to output test reports
+env:
+  - XUNIT_FILE=shippable/testresults/result.xml
+  - COVERALLS_SERVICE_NAME=shippable
+  - COVERALLS_REPO_TOKEN=
+
+before_script:
+  - mkdir -p shippable/testresults
+  - mkdir -p shippable/codecoverage
+
+install:
+  - npm install
+
+script:
+  - ./node_modules/.bin/mocha
+
+# Tell istanbul to generate a coverage report
+after_success:
+  - ./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec
+  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+
+notifications:
+  mail:
+    xavier.bruhiere@gmail.com

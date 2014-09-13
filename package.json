@@ -1,0 +1,49 @@
+{
+  "name": "an-illusion",
+  "author": "Xavier Bruhiere <xavier.bruhiere@gmail.com>",
+  "version": "0.1.0",
+  "description": "Intuition API emulation and documentation.",
+  "repository": "https://github.com/intuition-io/illusion",
+  "keywords": [
+    "REST",
+    "fake",
+    "doc",
+    "tool",
+    "development"
+  ],
+  "license": "MIT",
+  "bin": {
+    "illusion": "./bin/illusion.js"
+  },
+  "dependencies": {
+    "bunyan": "^1.0.1",
+    "chalk": "^0.5.1",
+    "cli-table": "^0.3.0",
+    "commander": "~2.3.0",
+    "faker": "^1.1.0",
+    "gulp-util": "^3.0.1",
+    "interfake": "~1.9.2",
+    "moment": "^2.8.3",
+    "node-uuid": "^1.4.1",
+    "semver": "^3.0.1",
+    "update-notifier": "^0.2.1"
+  },
+  "scripts": {
+    "start": "node bin/illusion.js fakeit",
+    "lint": "nodelint bin/illusion.js src/*.js",
+    "coverage": "istanbul cover _mocha -- -R spec test/cli.js",
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "test": "mocha --watch"
+  },
+  "engines": {
+    "node": ">=0.10"
+  },
+  "devDependencies": {
+    "coveralls": "^2.11.1",
+    "istanbul": "^0.3.2",
+    "mocha": "^1.21.4",
+    "mocha-lcov-reporter": "0.0.1",
+    "nodelint": "^0.6.2",
+    "should": "^4.0.4"
+  }
+}
