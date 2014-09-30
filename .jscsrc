@@ -1,0 +1,12 @@
+{
+  "preset": "google",
+  "validateLineBreaks": "LF",
+  "validateIndentation": 2,
+  "fileExtensions": [".js"],
+  "excludeFiles": [
+    "*.jsx",
+    "app/scripts/components/**",
+    "node_modules/**",
+    "bower_components/**"
+  ]
+}

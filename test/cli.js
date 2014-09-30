@@ -44,7 +44,6 @@ describe('Check cli arguments parser', function() {
       cmd.port.should.be.equal(3333);
       cmd.apiVersion.should.be.equal('v0');
       cmd.tradeState.should.be.equal('success');
-      cmd.should.have.property('metric');
       cmd.should.have.property('datapoints');
     })
   })

@@ -1,4 +1,6 @@
 /*jslint node: true */
+/*jshint camelcase: false */
+/*jscs:disable requireCamelCaseOrUpperCaseIdentifiers*/
 'use strict';
 
 var moment = require('moment');
@@ -10,8 +12,8 @@ function cumulativePerf() {
     capital_used: 107674.49865585833,
     ending_cash: 117674.49865585833,
     ending_value: -100842,
-    period_close: "Thu, 25 Jul 2013 23:00:00 GMT",
-    period_open: "Mon, 31 Dec 2012 23:00:00 GMT",
+    period_close: 'Thu, 25 Jul 2013 23:00:00 GMT',
+    period_open: 'Mon, 31 Dec 2012 23:00:00 GMT',
     pnl: 6832.498655858333,
     portfolio_value: 16832.498655858333,
     returns: 0.6832498655858333,
@@ -31,7 +33,7 @@ function cumulativeRiskMetrics() {
     excess_return: 0.6571498655858237,
     information: 1.2287286232412262,
     max_drawdown: 0.41694693028417595,
-    period_label: "2013-07",
+    period_label: '2013-07',
     sharpe: 1.051239373463075,
     sortino: 1.7073269562838835,
     trading_days: 143,
@@ -44,14 +46,14 @@ function dailyPerfOrders() {
     {
       amount: -100,
       commission: 2.5,
-      created: "Wed, 24 Jul 2013 15:25:00 GMT",
-      dt: "Wed, 24 Jul 2013 15:25:00 GMT",
+      created: 'Wed, 24 Jul 2013 15:25:00 GMT',
+      dt: 'Wed, 24 Jul 2013 15:25:00 GMT',
       filled: -100,
-      id: "2d842b1675f1469b804ea9093ecb7212",
+      id: '2d842b1675f1469b804ea9093ecb7212',
       limit: null,
       limit_reached: false,
       reason: null,
-      sid: "mc",
+      sid: 'mc',
       status: 1,
       stop: null,
       stop_reached: false
@@ -59,14 +61,14 @@ function dailyPerfOrders() {
     {
       amount: -100,
       commission: 2.5,
-      created: "Wed, 24 Jul 2013 15:25:00 GMT",
-      dt: "Wed, 24 Jul 2013 15:25:00 GMT",
+      created: 'Wed, 24 Jul 2013 15:25:00 GMT',
+      dt: 'Wed, 24 Jul 2013 15:25:00 GMT',
       filled: -100,
-      id: "a30b83043075421889870fb33b65b51f",
+      id: 'a30b83043075421889870fb33b65b51f',
       limit: null,
       limit_reached: false,
       reason: null,
-      sid: "saf",
+      sid: 'saf',
       status: 1,
       stop: null,
       stop_reached: false
@@ -80,19 +82,19 @@ function dailyPerfPositions() {
       amount: 23,
       cost_basis: 127.53499976213176,
       last_sale_price: 127.56,
-      sid: "mc"
+      sid: 'mc'
     },
     {
       amount: 10,
       cost_basis: 37.06499998990851,
       last_sale_price: 38.93,
-      sid: "dg"
+      sid: 'dg'
     },
     {
       amount: 40,
       cost_basis: 28.23500000988223,
       last_sale_price: 26.08,
-      sid: "alo"
+      sid: 'alo'
     }
   ];
 }
@@ -102,18 +104,18 @@ function dailyPerfTransactions() {
     {
       amount: -100,
       commission: 2.5,
-      dt: "Wed, 24 Jul 2013 15:25:00 GMT",
-      order_id: "2d842b1675f1469b804ea9093ecb7212",
+      dt: 'Wed, 24 Jul 2013 15:25:00 GMT',
+      order_id: '2d842b1675f1469b804ea9093ecb7212',
       price: 127.53499976213176,
-      sid: "mc"
+      sid: 'mc'
     },
     {
       amount: -100,
       commission: 2.5,
-      dt: "Wed, 24 Jul 2013 15:25:00 GMT",
-      order_id: "a30b83043075421889870fb33b65b51f",
+      dt: 'Wed, 24 Jul 2013 15:25:00 GMT',
+      order_id: 'a30b83043075421889870fb33b65b51f',
       price: 41.554999950906314,
-      sid: "saf"
+      sid: 'saf'
     }
   ];
 }
@@ -124,8 +126,8 @@ function dailyPerf() {
     ending_cash: 117674.49865585825,
     ending_value: -100842,
     orders: dailyPerfOrders(),
-    period_close: "Thu, 25 Jul 2013 20:00:00 GMT",
-    period_open: "Thu, 25 Jul 2013 13:31:00 GMT",
+    period_close: 'Thu, 25 Jul 2013 20:00:00 GMT',
+    period_open: 'Thu, 25 Jul 2013 13:31:00 GMT',
     pnl: -407.0000286962022,
     portfolio_value: 16832.498655858246,
     positions: dailyPerfPositions(),
@@ -142,26 +144,26 @@ function portfolioPositions() {
       amount: 100,
       cost_basis: 6.505000000087702,
       last_sale_price: 7.13,
-      sid: "aca"
+      sid: 'aca'
     },
     ai: {
       amount: -100,
       cost_basis: 95.63999982514976,
       last_sale_price: 96.33,
-      sid: "ai"
+      sid: 'ai'
     },
     alu: {
       amount: 100,
       cost_basis: 1.1316666666695512,
       last_sale_price: 1.64,
-      sid: "alu"
+      sid: 'alu'
     }
   };
 }
 
 function portfolio() {
   return {
-    _solver: "SLSQP",
+    _solver: 'SLSQP',
     capital_used: 107674.49865585833,
     cash: faker.random.number(5000, 100000),
     pnl: 6832.498655858333,
@@ -242,9 +244,10 @@ Snapshot.prototype = {
 
 function walkStructure(data, key, defaultValue) {
   defaultValue = defaultValue || -1;
-  var path = key.split(':'),
-      value;
-  for (var i = 0; i < path.length; i++) {
+  var path = key.split(':');
+  var i = 0;
+  var value;
+  for (; i < path.length; i++) {
     if (data.hasOwnProperty(path[i])) {
       value = data[path[i]];
       data = value;
@@ -257,17 +260,20 @@ function walkStructure(data, key, defaultValue) {
 }
 
 module.exports = function(id, keys, length) {
-  var snap = new Snapshot(length),
-      data = [],
-      _rowData,
-      row;
-  keys.push('date');
+  length = length || 1;
+  var snapshot_ = new Snapshot(length);
+  var data = [];
+  var _rowData;
+  var row;
+  var j;
+  var i = 0;
 
-  for (var i = 0; i < length; i++) {
-    row = snap.next(1);
+  for (; i < length; i++) {
+    row = snapshot_.next(1);
     _rowData = {};
-    if (keys !== null) {
-      for (var j = 0; j < keys.length; j++) {
+    if (keys !== undefined) {
+      keys.push('date');
+      for (j = 0; j < keys.length; j++) {
         _rowData[keys[j]] = walkStructure(row, keys[j]);
       }
     } else {
@@ -275,5 +281,5 @@ module.exports = function(id, keys, length) {
     }
     data.push(_rowData);
   }
-  return { data: data, id: id };
-}
+  return {data: data, id: id};
+};

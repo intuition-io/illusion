@@ -28,8 +28,8 @@ illusion doc -h
 You can either consult the API with `illusion doc` or fire up a fake server :
 
 ```
-$ illusion fakeit --datapoints 3,6,100 --metric portfolio:cash,daily_perf:returns --id someone
-[18:45:42] illusion version 0.1.0
+$ illusion fakeit --id someone --datapoints 3,6,100
+[18:45:42] illusion version 0.1.2
 [18:45:42] Emulating Telepathy server on port 3333
 ```
 
@@ -37,18 +37,44 @@ From there most of [telepathy][telepathy] endpoints are available
 
 ```
 $ curl localhost:3333/v0/health
-{ 
-  "states": {
-    "celery workers": "not implemented",
-    "telepathy": true
-  },
-  "versions": {
-    "celery": "3.1.14",
-    "insights": "0.3.2",
-    "intuition": "0.4.3",
-    "telepathy": "0.0.8"
-  }
+{
+    "components": [
+        {
+            "name": "workers", 
+            "state": {
+                "celery@neezy.laptop-300E5A": [
+                    "telepathy.backends.finance.trade"
+                ]
+            }, 
+            "version": "3.1.14"
+        }, 
+        {
+            "name": "intuition", 
+            "state": "installed", 
+            "version": "0.5.0"
+        }, 
+        {
+            "name": "insights", 
+            "state": "installed", 
+            "version": "0.3.2"
+        }
+    ], 
+    "version": "0.0.8"
 }
+```
+
+
+## Docker
+
+Thanks to [recent docker team efforts][languages-release], the dockerfile is
+ridiculously small and straightforward.
+
+```
+# You may need sudo depending on your setup
+# Build the container
+docker build --rm -t illusion . 
+# Run the app on port 3333
+docker run -it --rm --name illusion illusion
 ```
 
 
@@ -84,3 +110,4 @@ Copyright 2014 Xavier Bruhiere.
 [trello]: https://trello.com/c/LcPx6Z8X/74-changelog-illusion
 [telepathy]: https://github.com/intuition-io/telepathy
 [xbtwitter]: https://twitter.com/XavierBruhiere
+[languages-release]: http://blog.docker.com/2014/09/docker-hub-official-repos-announcing-language-stacks/

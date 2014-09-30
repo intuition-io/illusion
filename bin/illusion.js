@@ -20,8 +20,7 @@ if (!cli.validateSemver(pkg.version)) {
 cli.checkUpdate(pkg.name, pkg.version);
 
 log(chalk.bold(pkg.name), 'version', chalk.bold(pkg.version));
-// Parse arguments
+// Setup parser
 var program = cli.setup();
 // Process commands
 program.parse(process.argv);
-

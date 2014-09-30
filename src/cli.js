@@ -5,10 +5,10 @@ var program = require('commander');
 var semver = require('semver');
 var log = require('gulp-util').log;
 var updateNotifier = require('update-notifier');
-var doc = require('./doc')
-var fakeAPI = require('./routes')
+var doc = require('./doc');
+var fakeAPI = require('./router');
 
-function splitCommaStirng(sentence) {
+function splitCommaString(sentence) {
   return sentence.split(',');
 }
 
@@ -33,32 +33,35 @@ module.exports = {
 
   setup: function(version) {
     program
-      .version(version)
+      .version(version);
 
     program
       .command('fakeit')
       .description('Emulate API server')
       .option('-v, --verbose', 'Print out API setup informations')
       .option('-d, --debug', 'Switch on interfake debug mode')
-      .option('-i, --id [id]', 'Portfolio [id] resource to fetch', 'Pilot')
+      .option('-i, --id [id]', 'Portfolio [id] resource to fetch', 'ironman')
       .option('-p, --port [port]', 'Server [port] to listen to', 3333)
-      .option('-a, --api-version [version]', 'Telepathy API [version] to fake', 'v0')
-      .option('--datapoints [length]', 'Comma separated number of data points returned', splitCommaStirng, [5])
-      .option('-t, --trade-state [state]', 'Trading result once posted (success, error, pending)', 'success')
+      .option('-a, --api-version [version]',
+              'Telepathy API [version] to fake', 'v0')
+      .option('--datapoints [length]',
+              'Comma separated number of data points returned',
+              splitCommaString, [1, 5])
+      .option('-t, --trade-state [state]',
+              'Trading result once posted (success, error, pending)', 'success')
       .option('-c, --context [context]', 'Context used for trading')
-      .option('-m, --metric [attribute]', 'Comma separated portfolio metrics to make available', splitCommaStirng, ['portfolio'])
       .action(function(env) {
         log('Emulating Telepathy server on port', env.port);
         fakeAPI(env).listen(env.port);
-      })
+      });
 
     program
       .command('doc [resource]')
       .description('Pretty print API documentation for the given resource')
       .action(function(resource) {
         doc(resource);
-      })
+      });
 
     return program;
   }
-}
+};
